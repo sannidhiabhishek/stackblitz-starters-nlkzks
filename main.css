@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.calculator {
+  /*background-color: #22252d; updated to below*/
+  background-color: #292d36;
+  width: 100%;
+  /*max-width: 375px;*/
+  /*min-height: 640px;*/
+  display: flex;
+  flex-direction: column;
+  /*border-radius: 1.5rem;*/
+  overflow: hidden;
+  /* height added*/
+  height: 100%;
+}
+
+.display {
+  min-height: 200px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: white;
+  text-align: right;
+  flex: 1 1 0%;
+  /*border-radius, background-color and border-shadow added*/
+  border-radius: 0 0 1.5rem 1.5rem;
+  background-color: #22252d;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+}
+
+.display .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+  /*height added;*/
+  height: 100%;
+}
+
+.display .input {
+  width: 100%;
+  /*font-size: 1.25rem;*/
+  font-size: 3.25rem;
+  margin-bottom: 0.5rem;
+  /*height added;*/
+  height: 60%;
+}
+
+.display .output {
+  font-size: 3rem;
+  /*font-weight: 700;*/
+  width: 100%;
+  white-space: nowrap;
+  /*height added;*/
+  height: 20%;
+}
+
+.display .operator {
+  color: #23e20a;
+}
+
+.display .brackets {
+  color: #fff;
+}
+.display .percent {
+  color: #23e20a;
+}
+
+.keys {
+  /*background-color: #292d36;*/
+  padding: 1.5rem;
+  /*border-radius: 1.5rem 1.5rem 0 0;*/
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 1rem;
+  /*box-shadow: 0px -2px 16px rgba(0, 0, 0, 0.2);*/
+}
+
+.keys .key {
+  position: relative;
+  cursor: pointer;
+
+  display: block;
+  height: 0;
+  padding-top: 100%;
+  background-color: #262933;
+  /*border-radius: 1rem;*/
+  border-radius: 2.2rem;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.keys .key span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.keys .key:hover {
+  box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+.keys .key.operator span {
+  /*color: #eb6666;*/
+  color: #23e20a;
+}
+
+.keys .key.action span {
+  /*color: #26fed7;*/
+  color: #23e20a;
+}
