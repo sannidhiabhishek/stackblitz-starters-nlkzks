@@ -1,6 +1,7 @@
 Known Issue:
 ------------
 native eval function doesnot allow to use brackats ()
+hover/click button for color [Completed]
 
 Upcomming updates:
 - Force
