@@ -51,14 +51,24 @@
   /*height added;*/
   height: 100%;
 }
-
+@media only screen and (max-width: 400px) {
+  .display .input {
+    font-size: 1.75rem;
+  }
+}
+@media only screen and (min-width: 400px) {
+  .display .input {
+    font-size: 3rem;
+  }
+}
 .display .input {
   width: 100%;
   /*font-size: 1.25rem;*/
-  font-size: 3rem;
+  /*font-size: 3rem; updated to above*/
   margin-bottom: 0.5rem;
   /*height added;*/
   height: 50%;
+  overflow: auto;
 }
 
 .display .output {
@@ -68,6 +78,7 @@
   white-space: nowrap;
   /*height added;*/
   height: 30%;
+  color: #a9a9a9;
 }
 
 .display .operator {

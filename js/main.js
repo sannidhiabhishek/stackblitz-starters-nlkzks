@@ -1,15 +1,23 @@
+/*include('https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.2.0/math.js');
+include('https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.2.0/math.js.map');
+include('https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.2.0/math.js.map');*/
+//import { evaluate } from './external/13.2.0/math.js';
+/*import {math} from './external/13.2.0/math.js.map';
+import {math} from './external/13.2.0/math.min.js';*/
 const keys = document.querySelectorAll('.key');
 const display_input = document.querySelector('.display .input');
 const display_output = document.querySelector('.display .output');
 
 let input = '';
-
+let temp = '';
+var equal_clicked = false;
 for (let key of keys) {
   const value = key.dataset.key;
 
   key.addEventListener('click', () => {
     if (value == 'clear') {
       input = '';
+      temp ='';
       display_input.innerHTML = '';
       display_output.innerHTML = '';
     } else if (value == 'backspace') {
@@ -17,8 +25,12 @@ for (let key of keys) {
       display_input.innerHTML = CleanInput(input);
     } else if (value == '=') {
       let result = eval(PerpareInput(input));
-
-      display_output.innerHTML = CleanOutput(result);
+      //let result = evaluate(PerpareInput(input));
+      /* input and display_input.innerHTML are newly added. display_input.innerHTML is removed*/
+      input = String(result);
+      display_input.innerHTML = CleanOutput(input);
+      temp = input;
+      equal_clicked = true;
     } else if (value == 'brackets') {
       if (
         input.indexOf('(') == -1 ||
@@ -43,6 +55,7 @@ for (let key of keys) {
         display_input.innerHTML = CleanInput(input);
       }
     }
+    //console.log("Inner value :"+ input)
   });
 }
 
@@ -54,7 +67,7 @@ function CleanInput(input) {
     if (input_array[i] == '*') {
       input_array[i] = ` <span class="operator">x</span> `;
     } else if (input_array[i] == '/') {
-      input_array[i] = ` <span class="operator">÷</span> `;
+      input_array[i] = ` <span class="operator">&#247;</span> `;
     } else if (input_array[i] == '+') {
       input_array[i] = ` <span class="operator">+</span> `;
     } else if (input_array[i] == '-') {
@@ -121,4 +134,47 @@ function PerpareInput(input) {
   }
 
   return input_array.join('');
+}
+
+// Required for android
+function ValidateTempInput(value) {
+  let last_input = input.slice(-1);
+  let operators = ['+', '-', '*', '/'];
+
+  if (value == '.' && last_input == '.') {
+    return false;
+  }
+
+  if (operators.includes(value)) {
+    if (operators.includes(last_input)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  return true;
+}
+for (let key of keys) {
+  const value = key.dataset.key;
+  key.addEventListener('click', () => {
+    if(ValidateTempInput(value))
+    {
+      if(value != 'clear' && value != '=' && value !='backspace' && value != 'brackets'){
+        temp+= value;
+        //console.log("Output Inside if value :"+ temp)
+      }
+    }
+  if(temp.slice(-1)=='+' || temp.slice(-1)=='-' || temp.slice(-1)=='*' || temp.slice(-1)=='/'){
+    display_output.innerHTML = "";
+  }else{
+    let tempResult = eval(PerpareInput(input));
+    //let tempResult = evaluate(PerpareInput(input));
+    display_output.innerHTML = CleanOutput(tempResult);
+  }
+  if(equal_clicked == true){
+    display_output.innerHTML = ""
+    equal_clicked = false;
+  }
+  });
 }
