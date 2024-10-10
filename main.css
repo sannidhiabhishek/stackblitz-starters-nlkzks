@@ -58,16 +58,16 @@
   font-size: 3rem;
   margin-bottom: 0.5rem;
   /*height added;*/
-  height: 60%;
+  height: 50%;
 }
 
 .display .output {
-  font-size: 3rem;
+  font-size: 2rem;
   /*font-weight: 700;*/
   width: 100%;
   white-space: nowrap;
   /*height added;*/
-  height: 20%;
+  height: 30%;
 }
 
 .display .operator {
