@@ -99,7 +99,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  grid-gap: 1rem;
+  /*grid-gap: 1rem;*/
+  grid-gap: 0.7rem;
   /*box-shadow: 0px -2px 16px rgba(0, 0, 0, 0.2);*/
 }
 
@@ -125,7 +126,7 @@
   transform: translate(-50%, -50%);
 
   font-size: 2rem;
-  font-weight: 700;
+  /*font-weight: 700;*/
   color: #fff;
 }
 
@@ -136,6 +137,8 @@
 .keys .key.operator span {
   /*color: #eb6666;*/
   color: #23e20a;
+  /*font-size added*/
+  font-size: 3.5rem;
 }
 
 .keys .key.action span {

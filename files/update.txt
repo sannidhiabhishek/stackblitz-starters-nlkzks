@@ -1,11 +1,13 @@
-Known Issue:
-------------
+Current Known Issue:
+--------------------
 - native eval function doesnot allow to use brackats ()
-- hover/click button for color [Resolved]
-- Backspace Issue [Resolved]
-- Button UI and font needs to be fixed
+- Button UI and font needs to be fixed [Resolved]
 - Orintation [temporary solution: lock orintation of mobile]
-- Zoom [Resolved]
+
+Upcomming updates:
+------------------
+- Force
+- Different screen for android and ios
 
 Solition to lock orintation:
 --------------------------------------
@@ -45,7 +47,3 @@ This is how we would log the orientation:
 screen.addEventListener("orientationchange", function () {
   console.log("The orientation of the screen is: " + screen.orientation);
 });
-
-Upcomming updates:
-- Force
-- Different screen for android and ios
