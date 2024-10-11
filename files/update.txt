@@ -1,7 +1,6 @@
 Current Known Issue:
 --------------------
 - native eval function doesnot allow to use brackats ()
-- Button UI and font needs to be fixed [Resolved]
 - Orintation [temporary solution: lock orintation of mobile]
 
 Upcomming updates:
