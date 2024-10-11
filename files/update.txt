@@ -1,7 +1,11 @@
 Known Issue:
 ------------
-native eval function doesnot allow to use brackats ()
-hover/click button for color [Completed]
+- native eval function doesnot allow to use brackats ()
+- hover/click button for color [Resolved]
+- Backspace Issue [Resolved]
+- Button UI and font needs to be fixed
+- Orintation
+- Zoom
 
 Upcomming updates:
 - Force
