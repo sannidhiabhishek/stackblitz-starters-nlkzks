@@ -4,14 +4,6 @@ include('https://cdnjs.cloudflare.com/ajax/libs/mathjs/13.2.0/math.js.map');*/
 //import { evaluate } from './external/13.2.0/math.js';
 /*import {math} from './external/13.2.0/math.js.map';
 import {math} from './external/13.2.0/math.min.js';*/
-screen.orientation
-.lock("portrait")
-.then(() => {
-  console.log("Locked to protrate");
-})
-.catch((error) => {
-  console.log("Orintation Error :" + error);
-});
 const keys = document.querySelectorAll('.key');
 const display_input = document.querySelector('.display .input');
 const display_output = document.querySelector('.display .output');

@@ -4,8 +4,47 @@ Known Issue:
 - hover/click button for color [Resolved]
 - Backspace Issue [Resolved]
 - Button UI and font needs to be fixed
-- Orintation
-- Zoom
+- Orintation [temporary solution: lock orintation of mobile]
+- Zoom [Resolved]
+
+Solition to lock orintation:
+--------------------------------------
+1:
+@media screen and (orientation: landscape) {
+      html {
+        /* Rotate the content container */
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        /* Set content width to viewport height */
+        width: 100vh;
+        /* Set content height to viewport width */
+        height: 100vw;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+      }
+    }
+
+2:
+ @viewport {  
+   orientation: portrait;  
+ }  
+Here is a link we could add which basically does the same thing:
+
+<link rel="stylesheet" media="all and (orientation:portrait)" href="portrait.css">
+
+3:
+Above solution may not work on all browsers but hopefully will help. This uses JavaScript to "lock" the orientation & also the 2nd one adds an EventListener to the screen to identify the orientation.
+
+This is how we would lock the orientation:
+
+screen.lockOrientation('portrait');
+This is how we would log the orientation:
+
+screen.addEventListener("orientationchange", function () {
+  console.log("The orientation of the screen is: " + screen.orientation);
+});
 
 Upcomming updates:
 - Force
