@@ -59,7 +59,7 @@ function CleanInput(input) {
 
   for (let i = 0; i < input_array_length; i++) {
     if (input_array[i] == '*') {
-      input_array[i] = ` <span class="operator">x</span> `;
+      input_array[i] = ` <span class="operator">&#215</span> `;
     } else if (input_array[i] == '/') {
       input_array[i] = ` <span class="operator">&#247;</span> `;
     } else if (input_array[i] == '+') {

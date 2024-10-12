@@ -2,6 +2,7 @@ Current Known Issue:
 --------------------
 - native eval function doesnot allow to use brackats ()
 - Orintation [temporary solution: lock orintation of mobile]
+- Constant UI updates
 
 Upcomming updates:
 ------------------
