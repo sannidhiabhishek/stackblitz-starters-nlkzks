@@ -1,6 +1,6 @@
 Current Known Issue:
 --------------------
-- native eval function doesnot allow to use brackats ()
+- native eval function doesnot allow to use brackats () [Able to resolve but auto close is not implemented] -> For future implementation
 - Orintation [temporary solution: lock orintation of mobile]
 - Constant UI updates
 

@@ -79,7 +79,9 @@ function CleanInput(input) {
 }
 
 function CleanOutput(output) {
-  let output_string = output.toString();
+  let output_string = '';
+  output_string = output.toString();
+  //let output_string = output.toString();
   let decimal = output_string.split('.')[1];
   output_string = output_string.split('.')[0];
 
@@ -126,8 +128,11 @@ function PerpareInput(input) {
       input_array[i] = '/100';
     }
   }
-
-  return input_array.join('');
+  //Added below and commented is removed
+  let prepareBrackate = BracketsToXBrackets(input_array.join(''));
+  console.log(prepareBrackate)
+  return prepareBrackate;
+  //return input_array.join('');
 }
 
 // Required for android
@@ -166,7 +171,8 @@ for (let key of keys) {
   if(temp.slice(-1)=='+' || temp.slice(-1)=='-' || temp.slice(-1)=='*' || temp.slice(-1)=='/'){
     display_output.innerHTML = "";
   }else{
-    let tempResult = eval(PerpareInput(input));
+    let tempResult = '';
+    tempResult = eval(PerpareInput(input));
     //let tempResult = evaluate(PerpareInput(input));
     display_output.innerHTML = CleanOutput(tempResult);
   }
@@ -175,4 +181,24 @@ for (let key of keys) {
     equal_clicked = false;
   }
   });
+}
+
+// Brackets finction
+function BracketsToXBrackets(value)
+{
+  let input = value;
+  let input_array = input.split('');
+  let numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  let operators = ['+', '-', '*', '/'];
+  for (let i = 0; i < input_array.length; i++) {
+    if (input_array[i] == '(' && numbers.includes(input_array[i-1])) {
+      input_array = [...input_array.slice(0,i), '*', ...input_array.slice(i)];
+    }
+  }
+  for (let i = 0; i < input_array.length; i++) {
+    if (input_array[i] == ')' && numbers.includes(input_array[i-1]) && !operators.includes(input_array[i+1]) && i != input_array.length-1) {
+       input_array = [...input_array.slice(0,i+1), '*', ...input_array.slice(i+1)];
+    }
+  }
+  return input_array.join('')
 }
