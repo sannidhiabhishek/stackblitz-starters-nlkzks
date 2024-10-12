@@ -3,7 +3,6 @@
     "start": "servor --reload"
   },
   "dependencies": {
-    "mathjs": "^13.2.0",
     "servor": "^4.0.2"
   }
 }
