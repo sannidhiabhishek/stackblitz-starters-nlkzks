@@ -20,7 +20,7 @@ for (let key of keys) {
       display_input.innerHTML = CleanInput(input);
     } else if (value == '=') {
       //let result = eval(PerpareInput(input));
-      let result = evaluate(PerpareInput(input));
+      let result = math.evaluate(PerpareInput(input));
       /* input and display_input.innerHTML are newly added. display_input.innerHTML is removed*/
       input = String(result);
       display_input.innerHTML = CleanOutput(input);
@@ -168,7 +168,7 @@ for (let key of keys) {
     display_output.innerHTML = "";
   }else{
     //let tempResult = eval(PerpareInput(input));
-    let tempResult = evaluate(PerpareInput(input));
+    let tempResult = math.evaluate(PerpareInput(input));
     display_output.innerHTML = CleanOutput(tempResult);
   }
   if(equal_clicked == true){
