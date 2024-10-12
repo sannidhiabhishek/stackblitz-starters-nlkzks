@@ -1,4 +1,3 @@
-import { evaluate } from 'mathjs';
 const keys = document.querySelectorAll('.key');
 const display_input = document.querySelector('.display .input');
 const display_output = document.querySelector('.display .output');
@@ -19,8 +18,8 @@ for (let key of keys) {
       input = input.slice(0, -1);
       display_input.innerHTML = CleanInput(input);
     } else if (value == '=') {
-      //let result = eval(PerpareInput(input));
-      let result = math.evaluate(PerpareInput(input));
+      let result = eval(PerpareInput(input));
+      //let result = evaluate(PerpareInput(input));
       /* input and display_input.innerHTML are newly added. display_input.innerHTML is removed*/
       input = String(result);
       display_input.innerHTML = CleanOutput(input);
@@ -167,8 +166,8 @@ for (let key of keys) {
   if(temp.slice(-1)=='+' || temp.slice(-1)=='-' || temp.slice(-1)=='*' || temp.slice(-1)=='/'){
     display_output.innerHTML = "";
   }else{
-    //let tempResult = eval(PerpareInput(input));
-    let tempResult = math.evaluate(PerpareInput(input));
+    let tempResult = eval(PerpareInput(input));
+    //let tempResult = evaluate(PerpareInput(input));
     display_output.innerHTML = CleanOutput(tempResult);
   }
   if(equal_clicked == true){
