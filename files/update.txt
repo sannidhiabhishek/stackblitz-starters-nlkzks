@@ -1,15 +1,18 @@
 Current Known Issue:
 --------------------
-- native eval function doesnot allow to use brackats () [Able to resolve but auto close is not implemented] -> For future implementation
 - Orintation [temporary solution: lock orintation of mobile]
-- Constant UI updates
 
 Upcomming updates:
 ------------------
 - Force
 - Different screen for android and ios
+ 
+Maintaince:
+----------
+- Auto closing last bracket for output if there is a number after bracket else remove bracket and give output (future option)
+- Constant UI updates
 
-Solition to lock orintation:
+Solution to lock orintation:
 --------------------------------------
 1:
 @media screen and (orientation: landscape) {

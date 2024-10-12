@@ -79,9 +79,7 @@ function CleanInput(input) {
 }
 
 function CleanOutput(output) {
-  let output_string = '';
-  output_string = output.toString();
-  //let output_string = output.toString();
+  let output_string = output.toString();
   let decimal = output_string.split('.')[1];
   output_string = output_string.split('.')[0];
 
@@ -129,8 +127,8 @@ function PerpareInput(input) {
     }
   }
   //Added below and commented is removed
-  let prepareBrackate = BracketsToXBrackets(input_array.join(''));
-  console.log(prepareBrackate)
+  let prepareBrackate = BracketHandling(input_array.join(''));
+  //console.log(prepareBrackate)
   return prepareBrackate;
   //return input_array.join('');
 }
@@ -183,9 +181,9 @@ for (let key of keys) {
   });
 }
 
-// Brackets finction
-function BracketsToXBrackets(value)
-{
+// Brackets function
+function BracketHandling(value){
+  //Open Bracket Handling
   let input = value;
   let input_array = input.split('');
   let numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -200,5 +198,11 @@ function BracketsToXBrackets(value)
        input_array = [...input_array.slice(0,i+1), '*', ...input_array.slice(i+1)];
     }
   }
-  return input_array.join('')
+  //console.log(input_array);
+  return input_array.join('');
+}
+function openBracketHandling(value){
+  //find last opening and last closing bracket
+  // if last opening bracket is less then the lenth of array then push a closing bracket
+  // if last opening bracket is less then the lenth of array then remove the opening bracket
 }

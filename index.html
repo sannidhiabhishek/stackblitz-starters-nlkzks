@@ -9,8 +9,14 @@
     <link rel="apple-touch-icon" href="assets/CalBase.png" />
     <link rel="manifest" href="./manifest.json" />
     <link rel="stylesheet" href="css/main.css" />
+    <!--Hidden Screen CSS and Js start-->
+    <link href="css/external/bootstrap.min.css" rel="stylesheet" />
+    <script src="js/external/bootstrap.bundle.min.js"></script>
+    <script src="js/external/jquery.min.js"></script>
+    <link href="css/force.css" rel="stylesheet" />
+    <!--Hidden Screen CSS and Js end-->
   </head>
-  <body>
+  <body onload="getForce()">
     <div class="app">
       <div class="calculator">
         <div class="display">
@@ -110,8 +116,56 @@
         </div>
       </div>
     </div>
+    <!--Hidden Screen start-->
+    <div class="HiddenScreen" id="HiddenScreen">
+      <div class="container-sm pt-5 px-auto">
+        <h2 class="pb-3 text-center">CalBase</h2>
+        <div class="text-center pb-2">
+          <img
+            src="assets/CalBase.png"
+            class="img-fluid"
+            alt="Lockbase logo"
+            height="90px"
+            width="90px"
+          />
+        </div>
+        <form name="forceform">
+          <div class="form-group pb-3">
+            <label for="forcenumberfield">Force Number</label>
+            <input
+              type="number"
+              class="form-control"
+              id="forcenumberfield"
+              placeholder="Enter Force number"
+              name="forcenumberfield"
+              style="border: 1px solid #fff"
+            />
+            <small
+              >This number will be forcews once equals(=) is pressed on calculator.</small
+            >
+            <!--<div class="checkbox pt-4">
+              <label
+                ><input type="checkbox" name="forcecheck"/> Force the number</label
+              >
+            </br>
+              <small
+              >Unchecking will make the app behave almost like a normal calculator.</small
+            >
+            </div>-->
+          </div>
+        </form>
+        <div class="pb-3 pt-4 text-center">
+          <button type="submit" class="btn btn-light col-12" onclick="setForce()">Save</button>
+        </div>
+      </div>
+    </div>
+    <div id="snackbar"></div>
+    <!--Hidden Screen end-->
     <script src="js/main.js"></script>
     <script src="js/external/long-press-event.min.js"></script>
+    <!--Hidden Screen Js start-->
+    <script src="js/force.js"></script>
+    <!--Hidden Screen Js end-->
     <script>
       if('serviceWorker' in navigator){
         window.addEventListener('load', () => {
