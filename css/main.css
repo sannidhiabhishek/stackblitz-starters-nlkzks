@@ -158,3 +158,8 @@
   color: #fff;
   z-index: -1;
 }
+/*scroll issue*/
+body {
+  overflow: hidden;
+  height: 100%;
+}
