@@ -4,12 +4,11 @@ Current Known Issue:
 
 Upcomming updates:
 ------------------
-- Force
 - Different screen for android and ios
  
 Maintaince:
 ----------
-- Auto closing last bracket for output if there is a number after bracket else remove bracket and give output (future option)
+- Auto closing last bracket for output if there is a number after bracket else is there is no number show "Invalid input format" snackbar (future option)
 - Constant UI updates
 
 Solution to lock orintation:
