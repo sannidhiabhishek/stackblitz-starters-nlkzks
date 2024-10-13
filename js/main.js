@@ -1,13 +1,21 @@
+// Force variables start
+let switchToForce = false;
+var calculatorBehavoiour = "force";
+var count = 0;
+let numbers = ['0','1','2','3','4','5','6','7','8','9'];;
+let forceNumber = localStorage.getItem('CalBaseForceNumber');
+let achieveNumber = 0;
+let achieveNumber_array = forceNumber.split("");
+// Force variables end
 const keys = document.querySelectorAll('.key');
 const display_input = document.querySelector('.display .input');
 const display_output = document.querySelector('.display .output');
-
 let input = '';
 let temp = '';
 var equal_clicked = false;
+//if(calculatorBehavoiour == "force"){
 for (let key of keys) {
   const value = key.dataset.key;
-
   key.addEventListener('click', () => {
     if (value == 'clear') {
       input = '';
@@ -20,7 +28,76 @@ for (let key of keys) {
     } else if (value == '=') {
       let result = eval(PerpareInput(input));
       //let result = evaluate(PerpareInput(input));
-      /* input and display_input.innerHTML are newly added. display_input.innerHTML is removed*/
+      // input and display_input.innerHTML are newly added. display_input.innerHTML is removed
+      input = String(result);
+      display_input.innerHTML = CleanOutput(input);
+      temp = input;
+      equal_clicked = true;
+      if(switchToForce == false){
+        switchToForce = true;
+      }else{
+        switchToForce = false;
+      }
+    } else if (value == 'brackets') {
+      if (
+        input.indexOf('(') == -1 ||
+        (input.indexOf('(') != -1 &&
+          input.indexOf(')') != -1 &&
+          input.lastIndexOf('(') < input.lastIndexOf(')'))
+      ) {
+        input += '(';
+      } else if (
+        (input.indexOf('(') != -1 && input.indexOf(')') == -1) ||
+        (input.indexOf('(') != -1 &&
+          input.indexOf(')') != -1 &&
+          input.lastIndexOf('(') > input.lastIndexOf(')'))
+      ) {
+        input += ')';
+      }
+
+      display_input.innerHTML = CleanInput(input);
+    } else {
+      if (ValidateInput(value)) {
+        // Force code start
+        if(switchToForce == true && numbers.includes(value)){
+          let result = input;
+          let secondvalue = parseInt(result);
+          achieveNumber = parseInt(forceNumber)-secondvalue;
+          achieveNumber_array = achieveNumber.toString().split("");
+          if(count < achieveNumber_array.length){
+            input += achieveNumber_array[count];
+            display_input.innerHTML = CleanInput(input);
+            count++;
+          }
+        }
+        // Force code end
+        else{
+          input += value;
+          display_input.innerHTML = CleanInput(input);
+        }
+      }
+    }
+    //console.log("Inner value :"+ input)
+  });
+}
+//}
+
+/*if(calculatorBehavoiour == "normal"){
+for (let key of keys) {
+  const value = key.dataset.key;
+  key.addEventListener('click', () => {
+    if (value == 'clear') {
+      input = '';
+      temp ='';
+      display_input.innerHTML = '';
+      display_output.innerHTML = '';
+    } else if (value == 'backspace') {
+      input = input.slice(0, -1);
+      display_input.innerHTML = CleanInput(input);
+    } else if (value == '=') {
+      let result = eval(PerpareInput(input));
+      //let result = evaluate(PerpareInput(input));
+      // input and display_input.innerHTML are newly added. display_input.innerHTML is removed
       input = String(result);
       display_input.innerHTML = CleanOutput(input);
       temp = input;
@@ -46,13 +123,14 @@ for (let key of keys) {
     } else {
       if (ValidateInput(value)) {
         input += value;
-        display_input.innerHTML = CleanInput(input);
+        display_input.innerHTML = CleanInput(input);     
       }
     }
     //console.log("Inner value :"+ input)
   });
 }
-
+}*/
+ 
 function CleanInput(input) {
   let input_array = input.split('');
   let input_array_length = input_array.length;
@@ -207,7 +285,7 @@ function openBracketHandling(value){
   // if last opening bracket is less then the lenth of array then remove the opening bracket
 }
 
-
+//brackets long press
 $(function(){
   $( "#brackets" ).bind( "taphold", tapholdHandler );
  
@@ -216,6 +294,18 @@ $(function(){
     //showSnackbar("Brackets Long Press");
   }
 });
+
+//brackets long press
+$(function(){
+  $( "#dot" ).bind( "taphold", tapholdHandler );
+ 
+  function tapholdHandler( event ){
+    $("Div.HiddenScreen").css("z-index","1000");
+    //showSnackbar("Brackets Long Press");
+  }
+});
+
+//snackbar
 function showSnackbar(message) {
     var x = document.getElementById("snackbar");
     x.innerHTML = message;

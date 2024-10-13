@@ -5,6 +5,7 @@ function setForce(){
     localStorage.setItem('CalBaseForceNumber', setforcenumberdata);
     var settapholdtimedata = document.getElementById('tapholdtimefield').value;
     localStorage.setItem('CalBaseTapholdTime', settapholdtimedata);
+    window.location.reload();
     /*if(forcecheck){
         var setforcenumberdata = document.getElementById('forcenumberfield').value;
         localStorage.setItem('CalBaseForceNumber', setforcenumberdata);
