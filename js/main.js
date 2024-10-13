@@ -209,10 +209,16 @@ function openBracketHandling(value){
 
 
 $(function(){
-  $( "HiddenScreen" ).bind( "taphold", tapholdHandler );
+  $( "#brackets" ).bind( "taphold", tapholdHandler );
  
   function tapholdHandler( event ){
-    //$( event.target ).addClass( "taphold" );
-    howSnackbar("Brackets Long Press");
+    $("Div.HiddenScreen").css("z-index","1000");
+    //showSnackbar("Brackets Long Press");
   }
 });
+function showSnackbar(message) {
+    var x = document.getElementById("snackbar");
+    x.innerHTML = message;
+    x.className = "show";
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}

@@ -3,6 +3,8 @@ function setForce(){
     //console.log(forcecheck == true);
     var setforcenumberdata = document.getElementById('forcenumberfield').value;
     localStorage.setItem('CalBaseForceNumber', setforcenumberdata);
+    var settapholdtimedata = document.getElementById('tapholdtimefield').value;
+    localStorage.setItem('CalBaseTapholdTime', settapholdtimedata);
     /*if(forcecheck){
         var setforcenumberdata = document.getElementById('forcenumberfield').value;
         localStorage.setItem('CalBaseForceNumber', setforcenumberdata);
@@ -11,13 +13,15 @@ function setForce(){
         showSnackbar("Please select Force the number checkbox")
     }*/
 }
-$('#HiddenScreen').click(function (){
+$('#saveButton').click(function (){
     document.getElementById('HiddenScreen').style.zIndex = '-1';
 });
 function getForce(){
     var getforcenumberdata = localStorage.getItem('CalBaseForceNumber');
-    //var getforcenumbercheck = localStorage.getItem('CalBaseForceCheck');
     document.getElementById('forcenumberfield').value = getforcenumberdata;
+    var gettapholtimedata = localStorage.getItem('CalBaseTapholdTime');
+    document.getElementById('tapholdtimefield').value = gettapholtimedata;
+    //var getforcenumbercheck = localStorage.getItem('CalBaseForceCheck');
     /*console.log(getforcenumbercheck)
     var forcecheck = document.getElementById("forcecheckfield");
     if(getforcenumbercheck == true){
