@@ -207,14 +207,12 @@ function openBracketHandling(value){
   // if last opening bracket is less then the lenth of array then remove the opening bracket
 }
 
-$('#myeventID').taphold(function (e) { 
-  //document.getElementById('HiddenScreen').style.zIndex = '10000';
-  showSnackbar("Brackets Long Press");
-}) 
 
-function showSnackbar(message) {
-    var x = document.getElementById("snackbar");
-    x.innerHTML = message;
-    x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-}
+$(function(){
+  $( "HiddenScreen" ).bind( "taphold", tapholdHandler );
+ 
+  function tapholdHandler( event ){
+    //$( event.target ).addClass( "taphold" );
+    howSnackbar("Brackets Long Press");
+  }
+});
