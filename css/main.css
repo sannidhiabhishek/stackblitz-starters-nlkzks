@@ -1,3 +1,7 @@
+/*:root {
+  --samaung-green: #68b319;
+  --old-green: #23e20a;
+} */
 * {
   margin: 0;
   padding: 0;
@@ -84,14 +88,14 @@
 }
 
 .display .operator {
-  color: #23e20a;
+  color: #2b840e;
 }
 
 .display .brackets {
   color: #fff;
 }
 .display .percent {
-  color: #23e20a;
+  color: #2b840e;
 }
 
 .keys {
@@ -116,7 +120,7 @@
   padding-top: 100%;
   background-color: #262933;
   /*border-radius: 1rem;*/
-  border-radius: 2.2rem;
+  border-radius: 2.4rem;
   transition: 0.2s;
   user-select: none;
 }
@@ -138,14 +142,14 @@
 
 .keys .key.operator span {
   /*color: #eb6666;*/
-  color: #23e20a;
+  color: #2b840e;
   /*font-size added*/
   font-size: 3.5rem;
 }
 
 .keys .key.action span {
   /*color: #26fed7;*/
-  color: #23e20a;
+  color: #2b840e;
 }
 .HiddenScreen {
   position: fixed;
