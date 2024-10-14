@@ -8,7 +8,7 @@ Upcomming updates:
  
 Maintaince:
 ----------
-- Auto closing last bracket for output if there is a number after bracket else is there is no number show "Invalid input format" snackbar (future option)
+- Auto closing last bracket for output if there is a number after bracket else is there is no number show "Invalid input format" snackbar (future option) [Resolved]
 - Constant UI updates
 
 Solution to lock orintation:

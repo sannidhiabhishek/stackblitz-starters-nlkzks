@@ -2,7 +2,7 @@
 let switchToForce = false;
 //var calculatorBehavoiour = "force";
 var count = 0;
-let numbers = ['0','1','2','3','4','5','6','7','8','9'];;
+let numbers = ['0','1','2','3','4','5','6','7','8','9'];
 let forceNumber = localStorage.getItem('CalBaseForceNumber');
 let achieveNumber = 0;
 let achieveNumber_array = [];
@@ -29,7 +29,8 @@ for (let key of keys) {
       if(input.charAt(input.length -1) == "("){
         showSnackbar('Invalid format used')
       }
-      let result = eval(PerpareInput(input));
+      let checkInputForbrackets = openBracketHandling(input);
+      let result = eval(PerpareInput(checkInputForbrackets));
       //let result = evaluate(PerpareInput(input));
       // input and display_input.innerHTML are newly added. display_input.innerHTML is removed
       input = String(result);
@@ -62,7 +63,7 @@ for (let key of keys) {
     } else {
       if (ValidateInput(value)) {
         // Force code start
-        if(switchToForce == true && numbers.includes(value) && typeof forceNumber !== 'undefined' && forceNumber !== null){
+        if(switchToForce == true && numbers.includes(value) && typeof forceNumber !== 'undefined' && forceNumber !== null && forceNumber !== ''){
           let result = input;
           let secondvalue = parseInt(result);
           achieveNumber = parseInt(forceNumber)-secondvalue;
@@ -251,7 +252,8 @@ for (let key of keys) {
     display_output.innerHTML = "";
   }else{
     let tempResult = '';
-    tempResult = eval(PerpareInput(input));
+    let checkInputForbrackets = openBracketHandling(input);
+    tempResult = eval(PerpareInput(checkInputForbrackets));
     //let tempResult = evaluate(PerpareInput(input));
     display_output.innerHTML = CleanOutput(tempResult);
   }
@@ -283,9 +285,11 @@ function BracketHandling(value){
   return input_array.join('');
 }
 function openBracketHandling(value){
-  //find last opening and last closing bracket
-  // if last opening bracket is less then the lenth of array then push a closing bracket
-  // if last opening bracket is less then the lenth of array then remove the opening bracket
+  let value_array = value.split('');
+  if(value_array.lastIndexOf('(') > value_array.lastIndexOf(')') && numbers.includes(value_array[value_array.length-1])){ // )(
+    value_array.push(')')
+  }
+  return value_array.join('');
 }
 
 //brackets long press
