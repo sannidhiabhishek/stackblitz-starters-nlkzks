@@ -1,10 +1,10 @@
 {
-    "short_name": "CalBase",
+    "short_name": "Calculator",
     "name": "CalBase",
     "icons": [
         {
-            "src": "assets/CalBase_and.png",
-            "type": "image/png",
+            "src": "assets/CalBase_and.webp",
+            "type": "image/webp",
             "sizes": "1024x1024"
         }
     ],
