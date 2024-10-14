@@ -3,7 +3,7 @@
     "name": "CalBase",
     "icons": [
         {
-            "src": "assets/CalBase.png",
+            "src": "assets/CalBase_and.png",
             "type": "image/png",
             "sizes": "1024x1024"
         }
