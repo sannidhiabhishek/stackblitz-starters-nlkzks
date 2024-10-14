@@ -1,11 +1,11 @@
 // Force variables start
 let switchToForce = false;
-var calculatorBehavoiour = "force";
+//var calculatorBehavoiour = "force";
 var count = 0;
 let numbers = ['0','1','2','3','4','5','6','7','8','9'];;
 let forceNumber = localStorage.getItem('CalBaseForceNumber');
 let achieveNumber = 0;
-let achieveNumber_array = forceNumber.split("");
+let achieveNumber_array = [];
 // Force variables end
 const keys = document.querySelectorAll('.key');
 const display_input = document.querySelector('.display .input');
@@ -26,6 +26,9 @@ for (let key of keys) {
       input = input.slice(0, -1);
       display_input.innerHTML = CleanInput(input);
     } else if (value == '=') {
+      if(input.charAt(input.length -1) == "("){
+        showSnackbar('Invalid format used')
+      }
       let result = eval(PerpareInput(input));
       //let result = evaluate(PerpareInput(input));
       // input and display_input.innerHTML are newly added. display_input.innerHTML is removed
@@ -59,7 +62,7 @@ for (let key of keys) {
     } else {
       if (ValidateInput(value)) {
         // Force code start
-        if(switchToForce == true && numbers.includes(value)){
+        if(switchToForce == true && numbers.includes(value) && typeof forceNumber !== 'undefined' && forceNumber !== null){
           let result = input;
           let secondvalue = parseInt(result);
           achieveNumber = parseInt(forceNumber)-secondvalue;
