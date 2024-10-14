@@ -307,7 +307,7 @@ $(function(){
   $( "#dot" ).bind( "taphold", tapholdHandler );
  
   function tapholdHandler( event ){
-    window.location.replace("page2.html")
+    window.location.replace("normal_and.html")
     //showSnackbar("dot Long Press");
   }
 });
