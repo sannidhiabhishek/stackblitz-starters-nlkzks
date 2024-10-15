@@ -3,6 +3,7 @@ let switchToForce = false;
 //var calculatorBehavoiour = "force";
 var count = 0;
 let numbers = ['0','1','2','3','4','5','6','7','8','9'];
+let operator = ['+', '-', '*', '/'];
 let forceNumber = localStorage.getItem('CalBaseForceNumber');
 let achieveNumber = 0;
 let achieveNumber_array = [];
@@ -27,7 +28,7 @@ for (let key of keys) {
       display_input.innerHTML = CleanInput(input);
     } else if (value == '=') {
       if(input.charAt(input.length -1) == "("){
-        showSnackbar('Invalid format used')
+        showSnackbar('Invalid format used.')
       }
       let checkInputForbrackets = openBracketHandling(input);
       let result = eval(PerpareInput(checkInputForbrackets));
@@ -61,23 +62,27 @@ for (let key of keys) {
 
       display_input.innerHTML = CleanInput(input);
     } else {
-      if (ValidateInput(value)) {
-        // Force code start
-        if(switchToForce == true && numbers.includes(value) && typeof forceNumber !== 'undefined' && forceNumber !== null && forceNumber !== ''){
-          let result = input;
-          let secondvalue = parseInt(result);
-          achieveNumber = parseInt(forceNumber)-secondvalue;
-          achieveNumber_array = achieveNumber.toString().split("");
-          if(count < achieveNumber_array.length){
-            input += achieveNumber_array[count];
-            display_input.innerHTML = CleanInput(input);
-            count++;
+      if(input == "" && operator.includes(value)){
+        showSnackbar('Invalid format used.');
+      }else{
+        if (ValidateInput(value)) {
+          // Force code start
+          if(switchToForce == true && numbers.includes(value) && typeof forceNumber !== 'undefined' && forceNumber !== null && forceNumber !== ''){
+            let result = input;
+            let secondvalue = parseInt(result);
+            achieveNumber = parseInt(forceNumber)-secondvalue;
+            achieveNumber_array = achieveNumber.toString().split("");
+            if(count < achieveNumber_array.length){
+              input += achieveNumber_array[count];
+              display_input.innerHTML = CleanInput(input);
+              count++;
+            }
           }
-        }
-        // Force code end
-        else{
-          input += value;
-          display_input.innerHTML = CleanInput(input);
+          // Force code end
+          else{
+            input += value;
+            display_input.innerHTML = CleanInput(input);
+          }
         }
       }
     }

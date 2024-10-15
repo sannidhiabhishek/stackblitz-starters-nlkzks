@@ -1,4 +1,5 @@
 let numbers = ['0','1','2','3','4','5','6','7','8','9'];
+let operator = ['+', '-', '*', '/'];
 const keys = document.querySelectorAll('.key');
 const display_input = document.querySelector('.display .input');
 const display_output = document.querySelector('.display .output');
@@ -48,8 +49,12 @@ for (let key of keys) {
       display_input.innerHTML = CleanInput(input);
     } else {
       if (ValidateInput(value)) {
-        input += value;
-        display_input.innerHTML = CleanInput(input);     
+        if(input == "" && operator.includes(value)){
+          showSnackbar('Invalid format used.');
+        } else{
+          input += value;
+          display_input.innerHTML = CleanInput(input); 
+        }    
       }
     }
     //console.log("Inner value :"+ input)
