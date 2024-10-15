@@ -256,11 +256,13 @@ for (let key of keys) {
   if(temp.slice(-1)=='+' || temp.slice(-1)=='-' || temp.slice(-1)=='*' || temp.slice(-1)=='/'){
     display_output.innerHTML = "";
   }else{
-    let tempResult = '';
-    let checkInputForbrackets = openBracketHandling(input);
-    tempResult = eval(PerpareInput(checkInputForbrackets));
-    //let tempResult = evaluate(PerpareInput(input));
-    display_output.innerHTML = CleanOutput(tempResult);
+    if (canShowTempOutput(input) == true){
+      let tempResult = '';
+      let checkInputForbrackets = openBracketHandling(input);
+      tempResult = eval(PerpareInput(checkInputForbrackets));
+      //let tempResult = evaluate(PerpareInput(input));
+      display_output.innerHTML = CleanOutput(tempResult);
+    }
   }
   if(equal_clicked == true){
     display_output.innerHTML = ""
@@ -323,4 +325,15 @@ function showSnackbar(message) {
     x.innerHTML = message;
     x.className = "show";
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+//Temp Output
+function canShowTempOutput(value){
+  let operators = ['+', '-', '*', '/'];
+  for(let i=0; i<operators.length; i++){
+      if(value.includes(operators[i])){
+          return true;
+      }
+  }
+  return false;
 }
