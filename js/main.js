@@ -251,7 +251,9 @@ for (let key of keys) {
     }
     if (value == 'backspace') {
       temp = temp.slice(0, -1);
-      display_output.innerHTML = CleanInput(temp);
+      if (canShowTempOutput(input) == true){
+        display_output.innerHTML = CleanInput(temp);
+      }
     }
   if(temp.slice(-1)=='+' || temp.slice(-1)=='-' || temp.slice(-1)=='*' || temp.slice(-1)=='/'){
     display_output.innerHTML = "";
